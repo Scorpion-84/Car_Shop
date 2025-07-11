@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Car Shop</title>
+    </head>
+    <body>
+    <div style="text-align:center;background-color:111111;">
+        <h1><em>Welcome to Car Shop</em></h1>
+    </div>
+
+    <hr>
+    <ul>
+        {% for app1_shop in "shopcar" %}
+        <li>{{app1_shop.car_choice}}</li>
+        {% endfor %}
+    </ul>
+
+    </body>
+</html>

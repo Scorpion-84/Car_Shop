@@ -9,7 +9,8 @@ from rest_framework.views import APIView
 from rest_framework import generics, mixins
 from rest_framework import viewsets
 from django.contrib.auth import get_user_model
-
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 User = get_user_model()
 
@@ -145,6 +146,8 @@ class CarGenericsApiView(generics.ListCreateAPIView):
     
     queryset = CarChoice.objects.all()
     serializer_class = CarChoiceSerializer
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
 class CarGenericsDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     

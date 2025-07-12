@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +41,9 @@ INSTALLED_APPS = [
     'app1_shop',
     'app2_shop',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +135,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #from rest_framework.authentication import BasicAuthentication
 #from rest_framework.permissions import IsAuthenticated
 #from rest_framework.authentication import TokenAuthentication
+#from rest_framework_simplejwt.authentication import JWTAuthentication 
 
+#'rest_framework.authentication.TokenAuthentication'
 
 REST_FRAMEWORK ={
     
@@ -140,11 +145,30 @@ REST_FRAMEWORK ={
     'PAGE_SIZE': 2,
     'DEFAULT_AUTHENTICATION_CLASSES':[
         
-        'rest_framework.authentication.TokenAuthentication'
+         'rest_framework.authentication.BasicAuthentication',
         ],
     
     'DEFAULT_PERMISSION_CLASSES':[
         
         'rest_framework.permissions.IsAuthenticated'
         ],
+    
+     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes= 1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(minutes = 2),
+    
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Your Project API',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }

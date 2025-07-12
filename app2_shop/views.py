@@ -11,6 +11,7 @@ from rest_framework import viewsets
 from django.contrib.auth import get_user_model
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+from drf_spectacular.utils import extend_schema
 
 User = get_user_model()
 
@@ -60,6 +61,12 @@ def car_detail_view(request = Request, car_id = int):
 #region class base view
 
 class CarShopListApiView(APIView):
+    
+    @extend_schema(
+        request=CarChoiceSerializer,
+        responses={201: CarChoiceSerializer},
+        description = 'is used for get api'
+    )
     
     def get(self, request=Request):
         shopcar = CarChoice.objects.all()

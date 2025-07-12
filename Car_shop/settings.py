@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app1_shop',
     'app2_shop',
     'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -124,10 +125,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#my documentation:
+
 #from rest_framework.pagination import PageNumberPagination
 #from rest_framework.pagination import LimitOffsetPagination
 #from rest_framework.authentication import BasicAuthentication
 #from rest_framework.permissions import IsAuthenticated
+#from rest_framework.authentication import TokenAuthentication
+
 
 REST_FRAMEWORK ={
     
@@ -135,7 +140,7 @@ REST_FRAMEWORK ={
     'PAGE_SIZE': 2,
     'DEFAULT_AUTHENTICATION_CLASSES':[
         
-        'rest_framework.authentication.BasicAuthentication'
+        'rest_framework.authentication.TokenAuthentication'
         ],
     
     'DEFAULT_PERMISSION_CLASSES':[

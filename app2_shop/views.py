@@ -146,8 +146,8 @@ class CarGenericsApiView(generics.ListCreateAPIView):
     
     queryset = CarChoice.objects.all()
     serializer_class = CarChoiceSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+#    authentication_classes = [BasicAuthentication]
+#    permission_classes = [IsAuthenticated]
 
 class CarGenericsDetailApiView(generics.RetrieveUpdateDestroyAPIView):
     

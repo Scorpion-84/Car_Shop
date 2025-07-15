@@ -2,13 +2,14 @@ ARG DOCKER_REG
 FROM ${DOCKER_REG:-}python:3.9
 # FROM python:3.12-slim
 
+
 RUN mkdir -p /home/question_app
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONIOENCODING=utf-8
 
 WORKDIR /home/question_app
 
-COPY ./src .
+COPY ./Car_Shopping .
 COPY requirements.txt .
 
 RUN pip install --upgrade pip
